@@ -22,4 +22,6 @@ urlpatterns = [
     path('polls/', include('polls.urls')),
     # admin.site.urls est la seule URL n'ayant pas besoin d'include
     path('admin/', admin.site.urls),
+    # En plus des deux arguments obligatoires que nous venons de voir dans `path`, cette fonction a aussi un argument kwargs que nous n'utiliserons pas ici
+    # Et un argument name qui permet, si besoin, de garder un nom pour cette URL tout en pouvant changer le slug dans le navigateur à notre guise (de ce que je comprends)
 ]
