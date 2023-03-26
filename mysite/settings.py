@@ -29,7 +29,20 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+"""
+En plus de l'application polls que nous venons de créer, la création d'un projet Django 
+entraîne automatiquement l'installation des app de contrib ci-dessous, qu'on va bientôt avoir
+l'occasion d'utiliser.
 
+Pour utiliser ces apps, on va avoir besoin de créer et d'utiliser une base de données. Pour la
+création, on l'exécute via la commande `python manage.py migrate`. Cette commande va créer les 
+tables nécessaires au bon fonctionnement des INSTALLED_APPS, en se basant sur les réglages de 
+DATABASES.
+
+Après avoir exécuté la commande migrate, je peux installer sqlite3 via `sudo apt install sqlite3`,
+puis faire un `sqlite3 db.sqlite3` à la racine du projet, puis un `.tables` dans la commande sqlite3
+pour voir les tables nouvellement créées.
+"""
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -73,6 +86,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# Par défaut, les bases de données Django sont faites avec SQLite, et ça suffira pour le tuto
+# À changer en cas de vraie utilisation en prod pour le SGBD adapté of course
+# Liens pour changer le SGBD disponible dans le tuto: https://docs.djangoproject.com/en/4.1/intro/tutorial02/
+# EN SQLite, les bases de données sont stockées dans un fichier, dont le nom est donné dans le paramètre NAME
+# Avec d'autres SGBD, on peut devoir renseigner ci-dessous un USER, PASSWORD, HOST, etc
+# Ici le fichier db.sqlite3 se situe à la racine du projet mysite/.
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -105,7 +124,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE à paramétrer selon le fuseau horaire de l'application (ici dans ce contexte Paris)
+TIME_ZONE = 'Europe/Paris'
 
 USE_I18N = True
 
