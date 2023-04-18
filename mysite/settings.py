@@ -30,13 +30,13 @@ ALLOWED_HOSTS = []
 
 # Application definition
 """
-En plus de l'application polls que nous venons de créer, la création d'un projet Django 
+En plus de l'application polls que nous venons de créer, la création d'un projet Django
 entraîne automatiquement l'installation des app de contrib ci-dessous, qu'on va bientôt avoir
 l'occasion d'utiliser.
 
 Pour utiliser ces apps, on va avoir besoin de créer et d'utiliser une base de données. Pour la
-création, on l'exécute via la commande `python manage.py migrate`. Cette commande va créer les 
-tables nécessaires au bon fonctionnement des INSTALLED_APPS, en se basant sur les réglages de 
+création, on l'exécute via la commande `python manage.py migrate`. Cette commande va créer les
+tables nécessaires au bon fonctionnement des INSTALLED_APPS, en se basant sur les réglages de
 DATABASES.
 
 Après avoir exécuté la commande migrate, je peux installer sqlite3 via `sudo apt install sqlite3`,
