@@ -27,8 +27,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
-# Application definition
 """
 En plus de l'application polls que nous venons de créer, la création d'un projet Django
 entraîne automatiquement l'installation des app de contrib ci-dessous, qu'on va bientôt avoir
@@ -44,6 +42,20 @@ puis faire un `sqlite3 db.sqlite3` à la racine du projet, puis un `.tables` dan
 pour voir les tables nouvellement créées.
 """
 INSTALLED_APPS = [
+
+    # Pour que l'app soit incluse dans notre projet, on doit le préciser explicitement comme ci-dessous.
+    # On peut alors avertir Django d'une mise à jour dans notre modèle de données via un `python manage.py makemigrations polls`
+    # Les changements de base de données sont alors stockées dans une **migration**, qu'on peut voir dans le fichier migrations/0001_initial.py ici.
+    # Comme en Symfony, on pourrait parfois être amené à le modifier si besoin.
+
+    # Avant d'exécuter la migration, on peut savoir quelles requêtes SQL seront lancées via `python manage.py sqlmigrate polls 0001`.
+    # Django se permet quelques conventions de nommage par défaut, qu'on peut modifier / surcharger si besoin.
+    # On peut aussi faire `python manage.py check` pour que Django puisse faire quelques vérifications pour s'assurer que l'exécution des commandes sera safe.
+    # Si tout est ok, alors on peut faire `python manage.py migrate` pour exécuter la migration.
+
+    # L'historiques des migrations appliqué est stocké dans Django dans la table `django_migrations`.
+    'polls.apps.PollsConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -51,6 +63,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+"""
+On peut lancer une commande Python avec la commande `python manage.py shell`, qui a pour particularité (par rapport à l'interpréteur Python)
+de pré-définir la valeur de DJANGO_SETTINGS_MODULE, ce qui nous permet d'importer des trucs listés dans notre fichier `settings.py` ici (comme l'app Polls
+par exemple).
+"""
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

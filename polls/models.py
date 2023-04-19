@@ -8,6 +8,9 @@ et donc va éviter toute redondance (comme j'ai souvent eu l'habitude de voir en
 En Django, les migrations dépendent complètement des modèles (alors que ce n'est pas le cas en Ruby on Rails par exemple).
 
 Tous les modèles Django héritent de la classe `models.Model`.
+
+Les déclarations de modèle ci-dessous suffisent à Django pour pouvoir faire ensuite des CREATE TABLE, et créer une API de connexion à la base de données pour
+que les modifications des modèles ci-dessous se synchronisent avec les tables en base.
 """
 
 class Question(models.Model):
